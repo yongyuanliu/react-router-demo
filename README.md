@@ -1,5 +1,5 @@
-# mat-react-template
-> 前端开发模板，基于 react 技术所开发的基础性项目
+# react-router-demo
+> 依照 React Router 官网例子进行代码实现。
 
 ## Running Locally
 
@@ -16,13 +16,6 @@
 
 ## WiKi
 
-### entry-01
-  入口文件
-
-  * assets 公共资源文件
-  * components 公共组件
-  * controller 控制器/model
-  * pages 页面具体逻辑
-  * options 一些辅助类的文件
-  * utils 工具类文件
+### installation
+  依照 react router 官网 [Getting Started installation](https://reactrouter.com/docs/en/v6/getting-started/installation)
   

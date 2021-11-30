@@ -2,8 +2,10 @@
  * module import
  */
 const path = require('path');
-const htmlWebpackPlugin = require('html-webpack-plugin');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 /**
  * const variables init
  */
@@ -26,13 +28,10 @@ const serverConfig = {
  * @throws Error
  */
 function getAndCheckWebpackMode() {
-    if (isProduction) {
-        return production;
-    }
     if (isDevelopment) {
         return development;
     }
-    throw new Error(`check the NODE_ENV, must be ${production} or ${development} `)
+    throw new Error(`check the NODE_ENV, must be ${development}`);
 }
 
 /**
@@ -42,7 +41,7 @@ function getAndCheckWebpackMode() {
 const webpackConfig = {
     mode: getAndCheckWebpackMode(),
     entry: {
-        entry01: './entry-01/index.js',
+        installation: './installation/index.js',
     },
     output: {
         path: path.resolve(__dirname, 'public'),
@@ -68,22 +67,27 @@ const webpackConfig = {
             },
             {
                 test: /\.m?(sa|sc|c)ss$/i,
-                use: [ 'style-loader', 'css-loader' ]
+                use: [MiniCssExtractPlugin.loader, 'css-loader']
             }
         ]
     },
     plugins: [
-        new htmlWebpackPlugin({
-            template: './entry-01/template.html',
+        new HtmlWebpackPlugin({
+            template: './installation/template.html',
             filename: 'index.html',
-            title: 'Hello World!',
-            chunks: ['entry01']
-        })
+            title: 'installation!',
+            chunks: ['installation']
+        }),
+        new MiniCssExtractPlugin({
+            linkType: 'text/css',
+            filename: '[name].contenthash.css',
+            chunkFilename: '[id].contenthash.css'
+        }),
     ],
     performance: {
         hints: "warning", // 枚举
-        maxAssetSize: 300000, // 整数类型（以字节为单位）
-        maxEntrypointSize: 500000, // 整数类型（以字节为单位）
+        maxAssetSize: 3000000, // 整数类型（以字节为单位）
+        maxEntrypointSize: 5000000, // 整数类型（以字节为单位）
         assetFilter: function (assetFilename) {
             // 提供资源文件名的断言函数
             // 只给出js与css文件的性能提示
@@ -91,6 +95,18 @@ const webpackConfig = {
         }
     },
     optimization: {
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                terserOptions: {
+                    format: {
+                        comments: /@license/i,
+                    },
+                },
+                extractComments: true,
+            }),
+            new CssMinimizerPlugin(),
+        ],
         splitChunks: {
             chunks: 'async',
             minSize: 20000,
@@ -100,15 +116,15 @@ const webpackConfig = {
             maxInitialRequests: 30,
             enforceSizeThreshold: 50000,
             cacheGroups: {
-                defaultVendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: -10,
-                    reuseExistingChunk: true,
+                react: {
+                    test: /[\\/]node_modules[\\/]((react).*)[\\/]/,
+                    name: "react",
+                    chunks: "all"
                 },
-                default: {
-                    minChunks: 2,
-                    priority: -20,
-                    reuseExistingChunk: true,
+                commons: {
+                    test: /[\\/]node_modules[\\/]((?!react).*)[\\/]/,
+                    name: 'commons',
+                    chunks: 'all',
                 },
             },
         },

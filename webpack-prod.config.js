@@ -41,7 +41,7 @@ function getAndCheckWebpackMode() {
 const webpackConfig = {
     mode: getAndCheckWebpackMode(),
     entry: {
-        entry01: './entry-01/index.js',
+        installation: './installation/index.js',
     },
     output: {
         path: path.resolve(__dirname, 'public'),
@@ -73,10 +73,10 @@ const webpackConfig = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './entry-01/template.html',
+            template: './installation/template.html',
             filename: 'index.html',
-            title: 'Hello World!',
-            chunks: ['entry01']
+            title: 'installation',
+            chunks: ['installation']
         }),
         new MiniCssExtractPlugin({
             linkType: 'text/css',
