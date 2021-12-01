@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { getInvoices } from "../../controller/invoices/index"
 
 import "./invoices.css";
@@ -16,6 +16,7 @@ export default class Invoices extends React.Component {
                         </Link>
                     ))}
                 </nav>
+                <Outlet />
             </div>
         );
     }
