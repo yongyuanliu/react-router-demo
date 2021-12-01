@@ -6,7 +6,7 @@
   \******************************************************************************/*{box-sizing:border-box;margin:0;padding:0}.nav{border-bottom:1px solid;padding-bottom:1rem}
 /*!****************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./tutorial/pages/invoices/invoices.css ***!
-  \****************************************************************************************/.invoices{display:flex;padding:1rem 0}.invoices-list{border-right:1px solid;padding:1rem}.invoices-item{display:block;margin:1rem 0}
+  \****************************************************************************************/.invoices{display:flex;padding:1rem 0}.invoices-list{border-right:1px solid;padding:1rem}.invoices-item{display:block;margin:1rem 0}.invoices-item.active{border:1px solid}
 /*!*************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./tutorial/pages/notmatch/index.css ***!
   \*************************************************************************************/.no-match{padding:1rem}

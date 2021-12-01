@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from './pages/app/index';
 import Expenses from "./pages/expenses/index";
-import Invoices from "./pages/invoices/index";
+import Invoices from "./pages/invoices/searchParams";
 import Invoice from "./pages/invoices/invoice";
 import NoMatch from "./pages/notmatch";
 import ErrorBoundary from "./pages/error/boundary";
