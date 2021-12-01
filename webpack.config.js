@@ -73,15 +73,15 @@ const webpackConfig = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: './installation/template.html',
-            filename: 'index.html',
-            title: 'installation!',
-            chunks: ['installation']
-        }),
+        // new HtmlWebpackPlugin({
+        //     template: './installation/template.html',
+        //     filename: 'index.html',
+        //     title: 'installation!',
+        //     chunks: ['installation']
+        // }),
         new HtmlWebpackPlugin({
             template: './tutorial/template.html',
-            filename: 'tutorial.html',
+            filename: 'index.html',
             title: 'tutorial!',
             chunks: ['tutorial']
         }),
