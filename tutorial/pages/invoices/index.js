@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { getInvoices } from "../../controller/invoices/index"
 
 import "./invoices.css";
@@ -11,9 +11,11 @@ export default class Invoices extends React.Component {
             <div className="invoices">
                 <nav className="invoices-list">
                     {invoices.map(invoice => (
-                        <Link className="invoices-item" to={`/invoices/${invoice.number}`} key={invoice.number}>
+                        <NavLink className={({ isActive }) => isActive ? "invoices-item active" : "invoices-item"}
+                            to={`/invoices/${invoice.number}`}
+                            key={invoice.number}>
                             {invoice.name}
-                        </Link>
+                        </NavLink>
                     ))}
                 </nav>
                 <Outlet />

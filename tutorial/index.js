@@ -13,11 +13,16 @@ ReactDOM.render(
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<App />}>
-                <Route index path="/expenses" element={<Expenses />}></Route>
+                <Route path="/expenses" element={<Expenses />} />
                 <Route path="/invoices" element={<Invoices />}>
+                    <Route index element={
+                        <main style={{ padding: "1rem" }}>
+                            <p>Select an invoice</p>
+                        </main>
+                    } />
                     <Route path=":invoiceId" element={
                         <ErrorBoundary>
-                            <Invoice idx={123} />
+                            <Invoice />
                         </ErrorBoundary>
                     }></Route>
                 </Route>
