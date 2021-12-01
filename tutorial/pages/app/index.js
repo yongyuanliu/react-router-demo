@@ -2,7 +2,7 @@
  * react
  */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 
 import "../../assets/variable.css";
 import "./app.css";
@@ -22,6 +22,7 @@ class App extends React.Component {
                     <Link to="/invoices">Invoices</Link> |{" "}
                     <Link to="/expenses">Expenses</Link>
                 </nav>
+                <Outlet />
             </div>
         )
     }

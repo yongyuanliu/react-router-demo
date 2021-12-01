@@ -6,6 +6,7 @@
   "scripts": {
     "dev:build": "set NODE_ENV=development&&webpack --config webpack.config.js",
     "dev:start": "set NODE_ENV=development&&webpack serve --config webpack.config.js --history-api-fallback",
+    "dev:build:start" : "npm run dev:build && npm run dev:start",
     "prod:build": "set NODE_ENV=production&&webpack --config webpack-prod.config.js",
     "prod:start": "set NODE_ENV=production&&webpack serve --config webpack-prod.config.js --history-api-fallback",
     "test": "echo \"Error: no test specified\" && exit 1"

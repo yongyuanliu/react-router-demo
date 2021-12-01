@@ -9,9 +9,10 @@ const reactRoot = document.querySelector("#react_root");
 ReactDOM.render(
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<App />}></Route>
-            <Route path="/expenses" element={<Expenses />}></Route>
-            <Route path="/invoices" element={<Invoices />}></Route>
+            <Route path="/" element={<App />}>
+                <Route path="/expenses" element={<Expenses />}></Route>
+                <Route path="/invoices" element={<Invoices />}></Route>
+            </Route>
         </Routes>
     </BrowserRouter>,
     reactRoot
