@@ -57,6 +57,8 @@ class Invoices extends React.Component {
     }
 }
 
+
+
 export default (props) => (
     <Invoices {...props} params={useSearchParams()} />
 );
