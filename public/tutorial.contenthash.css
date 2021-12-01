@@ -1,0 +1,6 @@
+/*!********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./tutorial/assets/variable.css ***!
+  \********************************************************************************/:root{--set-color-white:#fff;--set-color-black:#000}
+/*!******************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./tutorial/pages/app/app.css ***!
+  \******************************************************************************/*{box-sizing:border-box;margin:0;padding:0}.nav{border-bottom:1px solid;padding-bottom:1rem}

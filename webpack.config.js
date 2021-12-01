@@ -42,6 +42,7 @@ const webpackConfig = {
     mode: getAndCheckWebpackMode(),
     entry: {
         installation: './installation/index.js',
+        tutorial: './tutorial/index.js',
     },
     output: {
         path: path.resolve(__dirname, 'public'),
@@ -77,6 +78,12 @@ const webpackConfig = {
             filename: 'index.html',
             title: 'installation!',
             chunks: ['installation']
+        }),
+        new HtmlWebpackPlugin({
+            template: './tutorial/template.html',
+            filename: 'tutorial.html',
+            title: 'tutorial!',
+            chunks: ['tutorial']
         }),
         new MiniCssExtractPlugin({
             linkType: 'text/css',
