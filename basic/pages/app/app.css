@@ -1,0 +1,10 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+.nav{
+    border-bottom: solid 1px;
+    padding-bottom: 1rem;
+}

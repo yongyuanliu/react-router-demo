@@ -43,6 +43,7 @@ const webpackConfig = {
     entry: {
         installation: './installation/index.js',
         tutorial: './tutorial/index.js',
+        basic: "./basic/index.js",
     },
     output: {
         path: path.resolve(__dirname, 'public'),
@@ -79,11 +80,17 @@ const webpackConfig = {
         //     title: 'installation!',
         //     chunks: ['installation']
         // }),
+        // new HtmlWebpackPlugin({
+        //     template: './tutorial/template.html',
+        //     filename: 'index.html',
+        //     title: 'tutorial!',
+        //     chunks: ['tutorial']
+        // }),
         new HtmlWebpackPlugin({
-            template: './tutorial/template.html',
+            template: './basic/template.html',
             filename: 'index.html',
-            title: 'tutorial!',
-            chunks: ['tutorial']
+            title: 'basic',
+            chunks: ['basic']
         }),
         new MiniCssExtractPlugin({
             linkType: 'text/css',
