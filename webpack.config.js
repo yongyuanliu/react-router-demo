@@ -41,9 +41,10 @@ function getAndCheckWebpackMode() {
 const webpackConfig = {
     mode: getAndCheckWebpackMode(),
     entry: {
-        installation: './installation/index.js',
-        tutorial: './tutorial/index.js',
-        basic: "./basic/index.js",
+        // installation: './installation/index.js',
+        // tutorial: './tutorial/index.js',
+        // basic: "./basic/index.js",
+        auth: "./auth/index.js",
     },
     output: {
         path: path.resolve(__dirname, 'public'),
@@ -87,10 +88,10 @@ const webpackConfig = {
         //     chunks: ['tutorial']
         // }),
         new HtmlWebpackPlugin({
-            template: './basic/template.html',
+            template: './auth/template.html',
             filename: 'index.html',
-            title: 'basic',
-            chunks: ['basic']
+            title: 'auth',
+            chunks: ['auth']
         }),
         new MiniCssExtractPlugin({
             linkType: 'text/css',
