@@ -5,6 +5,15 @@ import { getInvoices } from "../../controller/invoices/index"
 import "./invoices.css";
 
 class Invoices extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            matchs: {
+                filter: "",
+                number: ""
+            }
+        }
+    }
     render() {
         let invoices = getInvoices();
         let [searchParams, setSearchParams] = this.props.params;
@@ -15,18 +24,20 @@ class Invoices extends React.Component {
                     <input id="filter" value={searchParams.get("filter") || ""}
                         onChange={event => {
                             let filter = event.target.value;
-                            if (filter) {
-                                setSearchParams({ filter });
-                            }
+                            let matchs = this.state.matchs;
+                            matchs.filter = filter;
+                            this.setState({ matchs });
+                            setSearchParams(matchs, { replace: true });
                         }} />
                     <label htmlFor="number">number:</label>
-                    {/* <input id="number" value={searchParams.get("number") || ""}
+                    <input id="number" value={searchParams.get("number") || ""}
                         onChange={event => {
                             let number = event.target.value;
-                            if (number) {
-                                setSearchParams({ number });
-                            }
-                        }} /> */}
+                            let matchs = this.state.matchs;
+                            matchs.number = number;
+                            this.setState({ matchs });
+                            setSearchParams(matchs, { replace: true });
+                        }} />
                     {invoices
                         .filter(invoice => {
                             let filter = searchParams.get("filter");
@@ -36,13 +47,14 @@ class Invoices extends React.Component {
                             let name = invoice.name.toLowerCase();
                             return name.startsWith(filter.toLowerCase());
                         })
-                        // .filter(invoice => {
-                        //     let number = searchParams.get("number");
-                        //     if (!number) {
-                        //         return true;
-                        //     }
-                        //     return number.startsWith(invoice.number.toString().toLowerCase());
-                        // })
+                        .filter(invoice => {
+                            let number01 = searchParams.get("number");
+                            if (!number01) {
+                                return true;
+                            }
+                            let number = invoice.number.toString().toLowerCase();
+                            return number.startsWith(number01.toLowerCase());
+                        })
                         .map(invoice => (
                             <NavLink className={({ isActive }) => isActive ? "invoices-item active" : "invoices-item"}
                                 to={`/invoices/${invoice.number}`}
